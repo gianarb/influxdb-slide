@@ -3,13 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		<title>InfluxDb - Time Series Database</title>
-
 		<meta name="description" content="InfluxDb one of more time series Database">
 		<meta name="author" content="Gianluca Arbezzano">
-
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
@@ -17,8 +14,6 @@
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
 				var link = document.createElement( 'link' );
@@ -28,6 +23,14 @@
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
+
+        <style>
+            .bg_custom {
+                background:black;
+                padding:25px;
+                opacity:0.9;
+            }
+        </style>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -172,7 +175,105 @@ curl -X POST
 </code></pre>
                     </section>
                 </section>
+                
+                <section>
+                    <section>
+                        <h2>Admin Panel:8083</h2>
+                        <img src="/img/influxdb_admin_1.jpg">
+                    </section>
+                </section>
+                
+                <section>
+                    <section data-background="/img/graphana_bg.png">
+                        <h2 class="bg_custom">Grafana</h2>
+                        <p data-fragment-index="1" class="fragment bg_custom">Is an <a href="https://github.com/grafana/grafana">OpenSource</a> Javascript Dashboard</p>
+                        <div class="bg_custom fragment" data-fragment-index="2">
+                            <ul >
+                                <li class="fragment" data-fragment-index="2">Drag and drop panels</li>
+                                <li class="fragment" data-fragment-index="3">Click and select region to zoom</li>
+                                <li class="fragment" data-fragment-index="4">Bars, Lines, Points</li>
+                                <li class="fragment" data-fragment-index="5">Mix lines, bars and points</li>
+                                <li class="fragment" data-fragment-index="6">InfluxDB query editor</li>
+                                <li class="fragment" data-fragment-index="7">Annotation lines</li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2><a href="https://github.com/corley/influxdb-php-sdk">corley/influxdb-php-sdk</a></h2>
+                        <p>Another influxdb SDK writte in PHP</p>
+                        <img src="/img/corley.png">
+                    </section>
+                    <section>
+                        <h2>Install</h2>
+                        <pre><code>php composer.phar require corley/influxdb-sdk:dev-master</code></pre>
+                    </section>
+                    <section>
+                        <h2>Adapter System</h2>
+                        <p>Very flexible</p>
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">UDP Adapter</li>
+                            <li class="fragment" data-fragment-index="2">Guzzle Adapter</li>
+                            <li class="fragment" data-fragment-index="3">Your implementation..</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Create Client</h2>
+<pre><code data-trim>
+$options = new \InfluxDB\Options();
+$adapter = new \InfluxDB\Adapter\UdpAdapter($options);
 
+$client = new \InfluxDB\Client();
+$client->setAdapter($adapter);
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>Factroy pattern</h3>
+<pre><code data-trim>
+$options = [
+    "adapter" => [
+        "name" => "InfluxDB\\Adapter\\GuzzleAdapter",
+        "options" => [
+            // guzzle options
+        ],
+    ],
+    "options" => [
+        "host" => "my.influx.domain.tld",
+    ],
+    "filters" => [
+        "query" => [
+            "name" => "InfluxDB\\Filter\\ColumnsPointsFilter"
+        ],
+    ],
+];
+$client = \InfluxDB\ClientFactory::create($options);
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Mark your event</h2>
+<pre><code data-trim>
+$client->mark("error.404", ["page" => "/a-missing-page"]);
+$client->mark("app.search", $points, "s");
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Query</h2>
+<pre><code data-trim>
+$influx->query("select * from mine");
+$influx->query("select * from mine", "s");
+</code></pre>
+<pre><code data-trim>
+$client->setFilter(new ColumnsPointsFilter());
+$data = $client->query("select * from hd_used");
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Future</h2>
+                        <p style="padding:10px"><iframe src="http://ghbtns.com/github-btn.html?user=corley&repo=influxdb-php-sdk&type=watch&count=true&size=large" height="30" width="170" frameborder="0" scrolling="0" style="width:170px; height: 30px;" allowTransparency="true"></iframe> Star this project</p>
+                        <p style="padding:10px">Use it and help us with your <strong>issues</strong> & <strong>PR</strong></p>
+                    </section>
+                </section>
 			</div>
 		</div>
 

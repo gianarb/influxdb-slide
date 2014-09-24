@@ -113,21 +113,63 @@ sudo dpkg -i influxdb_latest_amd64.deb
                 <section>
                     <section>
                         <h1>Getting Start</h1>
+<pre><code data-trim>
+curl -X POST 
+    -d '[
+            {
+                "name" : "hd_used",
+                "columns" : ["value", "host", "mount"],
+                "points" : [
+                [23.2, "serverA", "/mnt"]
+                ]
+            }
+        ]' 
+    'http://localhost:8086/db/mydb/series?u=root&p=root'
+</code></pre>
                     </section>
                     <section>
-                        <h1>Create database</h1>
+                        <h2>More points for insert</h2>
+<pre><code data-trim>
+[
+  {
+    "name": "log_lines",
+    "columns": ["time", "sequence_number", "line"],
+    "points": [
+      [1400425947368, 1, "this line is first"],
+      [1400425947368, 2, "and this is second"]
+    ]
+  }
+]
+</code></pre>
                     </section>
                     <section>
-                        <h1>Create user</h1>
-                    </section>
-                    <section>
-                        <h1>Add Point</h1>
+                        <h1>Implement UDP protocol</h1>
+<pre><code data-trim>
+    [input_plugins.udp]
+    enabled = true
+    port = 4444
+    database = "search"
+</code></pre>
+                        <p class="fragment" data-fragment-index="1">
+                            InfluxDB is down? Your APP works! 
+                        </p> 
                     </section>
                     <section>
                         <h1>Query</h1>
-                    </section>
-                    <section>
-                        <h1>Api Response</h1>
+<pre><code data-trim>
+    curl 'http://localhost:8086?u=root&p=root&q=select * from log_lines limit 1'
+</code></pre>
+<pre class="fragment" data-fragment-index="1"><code data-trim>
+[
+  {
+    "name": "log_lines",
+    "columns": ["time", "sequence_number", "line"],
+    "points": [
+      [1400425947368, 287780001, "here's some useful log info"]
+    ]
+  }
+]
+</code></pre>
                     </section>
                 </section>
 

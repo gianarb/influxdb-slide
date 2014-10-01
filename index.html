@@ -96,7 +96,7 @@
                         <img width="30%" src="/img/golang.png">
 <pre><code data-trim>
 wget http://s3.amazonaws.com/influxdb/influxdb_latest_amd64.deb
-sudo dpkg -i influxdb_latest_amd64.deb 
+sudo dpkg -i influxdb_latest_amd64.deb
 </code></pre>
                         <a href="http://influxdb.com/docs/v0.7/introduction/installation.html">Docs</a>
                     </section>
@@ -108,16 +108,16 @@ sudo dpkg -i influxdb_latest_amd64.deb
                     <section>
                         <h2><a href="http://grafana.org">Grafana</a></h2>
                         <img src="/img/grafana.png">
-                        <p>An open source, feature rich metrics dashboard and graph editor for 
+                        <p>An open source, feature rich metrics dashboard and graph editor for
                         Graphite, InfluxDB & OpenTSDB.</p>
                     </section>
 				</section>
-                
+
                 <section>
                     <section>
                         <h1>Getting Start</h1>
 <pre><code data-trim>
-curl -X POST 
+curl -X POST
     -d '[
             {
                 "name" : "hd_used",
@@ -126,7 +126,7 @@ curl -X POST
                 [23.2, "serverA", "/mnt"]
                 ]
             }
-        ]' 
+        ]'
     'http://localhost:8086/db/mydb/series?u=root&p=root'
 </code></pre>
                     </section>
@@ -154,8 +154,18 @@ curl -X POST
     database = "search"
 </code></pre>
                         <p class="fragment" data-fragment-index="1">
-                            InfluxDB is down? Your APP works! 
-                        </p> 
+                            InfluxDB is down? Your APP works!
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Benchmark <strong>UDP vs TCP</strong></h2>
+<pre><code data-trim>
+Corley\Benchmarks\InfluxDB\AdapterEvent
+    Method Name                Iterations    Average Time      Ops/second
+    ------------------------  ------------  --------------    -------------
+    sendDataUsingHttpAdapter: [1,000     ] [0.0026700308323] [374.52751]
+    sendDataUsingUdpAdapter : [1,000     ] [0.0000436344147] [22,917.69026]
+</code></pre>
                     </section>
                     <section>
                         <h1>Query</h1>
@@ -175,26 +185,35 @@ curl -X POST
 </code></pre>
                     </section>
                 </section>
-                
+
                 <section>
                     <section>
                         <h2>Admin Panel:8083</h2>
                         <img src="/img/influxdb_admin_1.jpg">
                     </section>
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Create database</li>
+                            <li>Manage users</li>
+                            <li>Query and Graphs</li>
+                        </ul>
+                        <img src="/img/influx_graph.png">
+                    </section>
                 </section>
-                
+
                 <section>
                     <section data-background="/img/graphana_bg.png">
-                        <h2 class="bg_custom">Grafana</h2>
-                        <p data-fragment-index="1" class="fragment bg_custom">Is an <a href="https://github.com/grafana/grafana">OpenSource</a> Javascript Dashboard</p>
+                        <h2 data-fragment-index="1" class="fragment bg_custom" class="bg_custom">Grafana</h2>
+                        <p data-fragment-index="2" class="fragment bg_custom">Is an <a href="https://github.com/grafana/grafana">OpenSource</a> Javascript Dashboard</p>
                         <div class="bg_custom fragment" data-fragment-index="2">
                             <ul >
-                                <li class="fragment" data-fragment-index="2">Drag and drop panels</li>
-                                <li class="fragment" data-fragment-index="3">Click and select region to zoom</li>
-                                <li class="fragment" data-fragment-index="4">Bars, Lines, Points</li>
-                                <li class="fragment" data-fragment-index="5">Mix lines, bars and points</li>
-                                <li class="fragment" data-fragment-index="6">InfluxDB query editor</li>
-                                <li class="fragment" data-fragment-index="7">Annotation lines</li>
+                                <li class="fragment" data-fragment-index="3">Drag and drop panels</li>
+                                <li class="fragment" data-fragment-index="4">Click and select region to zoom</li>
+                                <li class="fragment" data-fragment-index="5">Bars, Lines, Points</li>
+                                <li class="fragment" data-fragment-index="6">Mix lines, bars and points</li>
+                                <li class="fragment" data-fragment-index="7">InfluxDB query editor</li>
+                                <li class="fragment" data-fragment-index="8">Annotation lines</li>
                             </ul>
                         </div>
                     </section>

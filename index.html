@@ -231,7 +231,7 @@ Corley\Benchmarks\InfluxDB\AdapterEvent
                 <section>
                     <section>
                         <h2><a href="https://github.com/corley/influxdb-php-sdk">corley/influxdb-php-sdk</a></h2>
-                        <p>Another influxdb SDK writte in PHP</p>
+                        <p>Another influxdb SDK written in PHP</p>
                         <img src="img/corley.png">
                     </section>
                     <section>
@@ -347,7 +347,12 @@ $data = $client->query("select * from hd_used");
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
-
+            Reveal.configure({
+                keyboard: {
+                    38: "prev",
+                    40: "next"
+                }
+            });
 		</script>
 
 	</body>

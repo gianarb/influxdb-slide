@@ -58,19 +58,14 @@
                         <h2>Time series database</h2>
 						<p>It  is a software system that is optimized for handling time series data, arrays of numbers indexed by time (a datetime or a datetime range)</p>
 					</section>
+                    <section>
+                        <h2>Learn Startup</h2>
+                        <p class="fragment" data-fragment-index="1">Eric Ries<br>The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses</p>
+                        <img class="fragment" data-fragment-index="2" src="img/startup.png">
+                    </section>
 					<section>
-						<h2>Time sieries data</h2>
+						<h2>Time series data</h2>
 						<p>A time series is a sequence of data points, measured typically at successive points in time spaced at uniform time intervals</p>
-					</section>
-					<section>
-						<h2>Why?</h2>
-                        <ul>
-                            <li class="fragment" data-fragment-index="1">Real time</li>
-                            <li class="fragment" data-fragment-index="2">Easy</li>
-                            <li class="fragment" data-fragment-index="3">Scalable</li>
-                            <li class="fragment" data-fragment-index="4">Http api & Client(php, python, ruby...)</li>
-                            <li class="fragment" data-fragment-index="5">Single source</li>
-                        </ul>
 					</section>
 					<section>
 						<h2>other possibility</h2>
@@ -100,6 +95,16 @@ sudo dpkg -i influxdb_latest_amd64.deb
 </code></pre>
                         <a href="http://influxdb.com/docs/v0.7/introduction/installation.html">Docs</a>
                     </section>
+					<section>
+						<h2>Why?</h2>
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Real time</li>
+                            <li class="fragment" data-fragment-index="2">Easy</li>
+                            <li class="fragment" data-fragment-index="3">Scalable</li>
+                            <li class="fragment" data-fragment-index="4">Http api & Client(php, python, ruby...)</li>
+                            <li class="fragment" data-fragment-index="5">Single source</li>
+                        </ul>
+					</section>
                     <section>
                         <h2>Open Source</h2>
                         <img width="40%"src="img/dojocat.jpg">
@@ -115,7 +120,7 @@ sudo dpkg -i influxdb_latest_amd64.deb
 
                 <section>
                     <section>
-                        <h1>Getting Start</h1>
+                        <h1>Getting Started</h1>
 <pre><code data-trim>
 curl -X POST
     -d '[
@@ -253,7 +258,7 @@ $client->setAdapter($adapter);
 </code></pre>
                     </section>
                     <section>
-                        <h3>Factroy pattern</h3>
+                        <h3>Factory pattern</h3>
 <pre><code data-trim>
 $options = [
     "adapter" => [
@@ -291,6 +296,23 @@ $influx->query("select * from mine", "s");
 $client->setFilter(new ColumnsPointsFilter());
 $data = $client->query("select * from hd_used");
 </code></pre>
+                    </section>
+                    <section>
+                        <h2>The key of measure</h2>
+                        <img src="img/github-update.png">
+                        <p>GitHub - <a href="https://github.com/blog/1880-making-mysql-better-at-github">Making MySql Better at GitHub</a></p>
+                    </section>
+                    <section>
+                        <h3>Richard Feynman - <a href="https://www.youtube.com/watch?v=b240PGCMwV0">The Key to Science</a></h3>
+                        <img src="img/richardfeynman.jpg">
+                        <p>
+                        <ol>
+                            <li class="fragment" data-fragment-index="1">Guess</li>
+                            <li class="fragment" data-fragment-index="2">Compute Consequences</li>
+                            <li class="fragment" data-fragment-index="3">Compare with experiment/experience</li>
+                        </ol>
+                        <h3 class="fragment" data-fragment-index="4">"If it disagrees with experiment, it’s WRONG"</h3>
+                        </p>
                     </section>
                     <section>
                         <h2>Future</h2>
